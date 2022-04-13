@@ -157,10 +157,12 @@ Let's work on that now.
         - return `hour` if `hour` is less than `12` otherwise returns `hour - 12`.
     <br />
     <br />
+
     - Function `getMinute()`
 
         - Takes in a parameter called `minute`
         - returns `00` if `minute` is equal to `0` otherwise returns `minute`
+    
     <br />
     <br />
 
