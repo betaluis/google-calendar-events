@@ -191,3 +191,71 @@ Let's work on that now.
             const time = hour && `${hour}:${minute}${timeSuffix}`;
 
     - If all the above is done correctly, the time property that is being returned by the `processDate()` function should have the correct formatting. 
+
+- Now it's time to work on the `endDate` but since we already took the time to set up the formatting, it'll be very simple.
+
+    - All you have to do is copy the `const startDate` and change the word "start" to "end." Do this everywhere the word "start" is used.
+
+
+Now, let's work on the `dateRange` but this one is a little more complex than the previous.
+
+Create a variable for `dateRange` but it makes more sense to make this a "let" than a "const."
+
+    let dateRange;
+
+There are three possible things we could get back:
+
+1. If it's an all day event that lasts multiple days or a single day.
+2. An event with a start date and start time.
+3. An event with an end date and end time.
+
+Let's write the "if" statements to handle those.
+
+    if ( startDate.date !== endDate.date){
+        dateRange = `${startDate.month} ${startDate.date} -
+        ${endDate.month} ${endDate.date}`
+    }
+
+- This statement checks if it's a multi day event.
+
+<br />
+
+    else if (!startDate.time) {
+        dateRange = `${startDate.month} ${startDate.date}`;
+    }
+
+- This if statement checks if it's an all day event. If there's not a start time then it's an all day event.
+
+<br />
+
+    else {
+        dateRange = `${startDate.weekday}, ${startDate.time} - ${endDate.time}`;
+    }
+
+Now console log processedEvents to see to correct formatting for each event.
+
+Delete the console.log and now what we want to do is map through the processedEvents and inject some HTML in the `eventContainer`.
+
+    eventContainer.innerHTML = processedEvents.map((event, i) => createEvent(event, i)).join(''));
+
+- We're mapping through each event and keeping track of the index at the same time. For each event we're evoking a function called `createEvent()` and passing in the event and index as arguements. Then, we're joing the array together.
+
+- Now let's create the `createEvent()` function.
+
+<br />
+
+    const createEvent(e, i) => {
+        return `
+        // Event card template goes here
+        `
+    }
+
+- Replace the hard coded dates and times with the proper data pulled from our event object.
+
+    - e.start.month
+    - e.start.date
+    - e.dateRange
+    - e.link
+    - e.name
+    - e.description
+    - e.link
